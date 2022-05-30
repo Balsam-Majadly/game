@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.AI;
 public class Score : MonoBehaviour
 {
     public float timer;
@@ -11,25 +11,45 @@ public class Score : MonoBehaviour
     public Vector3 Target;
     public int enemyValue;
     public  int scoreLevel=2;
+    /// <summary>
+    ///
+    /// </summary>
+    public float timeForNewPath;
+    bool inCoRoutine;
+    public Rigidbody rb;
+    public float movementSpeed = 10f;
+    public float moveSpeed =100f;
+    public float rotateSpeed = 100f;
 
     public int coinValue;
+
+
+    
+    Vector3 getNewRandomPosition()
+    {
+        float X = Random.Range(-2, 0);
+        //float Y = Random.Range(-1, 1);
+        float Z = Random.Range(-1, 0);
+        Vector3 pos = new Vector3(X,0, Z);
+        return pos;
+    }/*
+    IEnumerator DoSomething()
+    {
+        inCoRoutine = true;
+        yield return new WaitForSeconds(timeForNewPath);
+        GetNewPath();
+        inCoRoutine = false;
+    }
+    void GetNewPath()
+    {
+
+        //transform.position =transform.position+ getNewRandomPosition();
+        //transform.Translate(getNewRandomPosition());
+        //rb.MovePosition(transform.position + (getNewRandomPosition() * movementSpeed * Time.deltaTime));
+        Vector3 pos = getNewRandomPosition();
+        transform.position = pos * Time.deltaTime;
+    }*/
     /*
-    void Start()
-    {
-        
-    }
-
-     void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer>= newtarget)
-        {
-            newTarget();
-            timer = 0;
-        }
-        
-    }
-
     void newTarget()
     {
         float myX = gameObject.transform.position.x;
@@ -41,6 +61,15 @@ public class Score : MonoBehaviour
         Target = new Vector3(xPos, yPos, zPos);
         transform.Translate(Target);
     }*/
+
+    void Update()
+    {
+
+        transform.Translate(getNewRandomPosition() * moveSpeed * Time.deltaTime, Space.World);
+
+        transform.Rotate(0, 0, 1f * rotateSpeed * Time.deltaTime);
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("player"))

@@ -129,4 +129,7 @@ MonoBehaviour:
   newtarget: 5
   speed: 5
   Target: {x: 0, y: 0, z: 0}
+  enemyValue: 0
+  scoreLevel: 2
+  timeForNewPath: 1
   coinValue: 1
