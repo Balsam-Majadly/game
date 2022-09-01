@@ -5,7 +5,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     public static NewBehaviourScript instance;
-    public float forwardSpeed = 25f, strafeSpeed = 7.5f, hoverSpeed = 5f;
+    public float forwardSpeed = 50f, strafeSpeed = 7.5f, hoverSpeed = 5f;
     private float activeForwardSpeed, activeStrafeSpeed, activeHoverSpeed;
     private float forwardAcceleration = 2.5f, starfeAcceleration = 2f, hoverAcceleration = 2f;
     public float lookRateSpeed = 90f;
@@ -17,6 +17,8 @@ public class NewBehaviourScript : MonoBehaviour
     private int  Score=0;
     public int playerValue=1;
     private bool flag = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,16 +43,18 @@ public class NewBehaviourScript : MonoBehaviour
         mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f);
 
         rollInput = Mathf.Lerp(rollInput, Input.GetAxisRaw(axisName: "Roll"), rollAccelaration * Time.deltaTime);
+      
 
         transform.Rotate(-mouseDistance.y * lookRateSpeed * Time.deltaTime, mouseDistance.x * lookRateSpeed * Time.deltaTime, rollInput*rollSpeed*Time.deltaTime, Space.Self);
-        activeForwardSpeed =Mathf.Lerp(activeForwardSpeed, Input.GetAxisRaw("Vertical") * forwardSpeed,forwardAcceleration*Time.deltaTime);
-        activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxisRaw("Horizontal") * strafeSpeed,starfeAcceleration * Time.deltaTime);
+        activeForwardSpeed =Mathf.Lerp(activeForwardSpeed, mouseDistance.y * forwardSpeed,forwardAcceleration*Time.deltaTime);
+        activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxis("Mouse Y") * strafeSpeed,starfeAcceleration * Time.deltaTime);
         activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Hover") * hoverSpeed,hoverAcceleration*Time.deltaTime);
-        transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
+        transform.position += transform.forward * Time.deltaTime* forwardSpeed;
         transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) + (transform.up * activeHoverSpeed * Time.deltaTime);
-       
-      
+        //transform.position = screenCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, zDistance);
     }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag=="enemy")

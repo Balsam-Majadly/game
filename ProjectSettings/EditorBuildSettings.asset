@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/startM.unity
     guid: fc1fb248a842227408ad0f1e14edd5a5
+  - enabled: 1
+    path: Assets/Scenes/TimeOut.unity
+    guid: eb0da5ce19bc1054daa1da122be414fd
   m_configObjects: {}

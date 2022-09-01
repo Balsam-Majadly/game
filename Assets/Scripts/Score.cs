@@ -18,8 +18,8 @@ public class Score : MonoBehaviour
     bool inCoRoutine;
     public Rigidbody rb;
     public float movementSpeed = 10f;
-    public float moveSpeed =100f;
-    public float rotateSpeed = 100f;
+    public float moveSpeed =0.5f;
+    public float rotateSpeed = 0.5f;
 
     public int coinValue;
 
@@ -27,8 +27,8 @@ public class Score : MonoBehaviour
     
     Vector3 getNewRandomPosition()
     {
-        float X = Random.Range(-2, 0);
-        //float Y = Random.Range(-1, 1);
+        float X = Random.Range(-1, 0);
+        float Y = Random.Range(-1, 1);
         float Z = Random.Range(-1, 0);
         Vector3 pos = new Vector3(X,0, Z);
         return pos;
@@ -65,9 +65,9 @@ public class Score : MonoBehaviour
     void Update()
     {
 
-        transform.Translate(getNewRandomPosition() * moveSpeed * Time.deltaTime, Space.World);
+       // transform.Translate(getNewRandomPosition() * moveSpeed * Time.deltaTime, Space.World);
 
-        transform.Rotate(0, 0, 1f * rotateSpeed * Time.deltaTime);
+        //transform.Rotate(0, 0, 1f * rotateSpeed * Time.deltaTime);
 
     }
     private void OnTriggerEnter(Collider other)
