@@ -6,15 +6,42 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/startM.unity
+    guid: fc1fb248a842227408ad0f1e14edd5a5
+  - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: 68a7aa8a084204042a1ff54fbd104dd5
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/startM.unity
-    guid: fc1fb248a842227408ad0f1e14edd5a5
-  - enabled: 1
     path: Assets/Scenes/TimeOut.unity
     guid: eb0da5ce19bc1054daa1da122be414fd
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: b687085f54a3efd4aab864803131da12
+  - enabled: 1
+    path: Assets/Scenes/New Scene2.unity
+    guid: bce1c9b4cf336244ab3441a3bec2e058
+  - enabled: 1
+    path: Assets/Scenes/TimeOut2.unity
+    guid: e3d293ee434ad1e4587fe820e01ee1a3
+  - enabled: 1
+    path: Assets/Scenes/New Scene3.unity
+    guid: 606a1c3b4398a97449f5edfcb2173e0c
+  - enabled: 1
+    path: Assets/Scenes/LoseScene2.unity
+    guid: b6fe2f068f1a3d44d8ef380b45a15d2f
+  - enabled: 1
+    path: Assets/Scenes/TimeOut3.unity
+    guid: 82149b72eee9a9743ad34ede64d804df
+  - enabled: 1
+    path: Assets/Scenes/LoseScene3.unity
+    guid: 2e8c1f5ae91ffff40b2604edc8657d77
+  - enabled: 1
+    path: Assets/Scenes/WinScene3.unity
+    guid: 3edd96a009a28ea498b0bdf7d7944b9f
+  - enabled: 1
+    path: Assets/Scenes/WinScene2.unity
+    guid: ca112d56cae1cf24987f70d9cff5e4e2
   m_configObjects: {}

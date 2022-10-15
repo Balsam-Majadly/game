@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RetryGame : MonoBehaviour
 {
+    public int level;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,18 @@ public class RetryGame : MonoBehaviour
     }
     public void LoadGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        Debug.Log("Hello: ");
+        if (level == 1)
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+        if (level == 2)
+        {
+            SceneManager.LoadScene("New Scene2");
+        }
+        if (level == 3)
+        {
+            SceneManager.LoadScene("New Scene3");
+        }
     }
 }

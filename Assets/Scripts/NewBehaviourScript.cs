@@ -5,7 +5,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     public static NewBehaviourScript instance;
-    public float forwardSpeed = 50f, strafeSpeed = 7.5f, hoverSpeed = 5f;
+    public float forwardSpeed = 70f, strafeSpeed = 7.5f, hoverSpeed = 5f;
     private float activeForwardSpeed, activeStrafeSpeed, activeHoverSpeed;
     private float forwardAcceleration = 2.5f, starfeAcceleration = 2f, hoverAcceleration = 2f;
     public float lookRateSpeed = 90f;
@@ -46,10 +46,12 @@ public class NewBehaviourScript : MonoBehaviour
       
 
         transform.Rotate(-mouseDistance.y * lookRateSpeed * Time.deltaTime, mouseDistance.x * lookRateSpeed * Time.deltaTime, rollInput*rollSpeed*Time.deltaTime, Space.Self);
-        activeForwardSpeed =Mathf.Lerp(activeForwardSpeed, mouseDistance.y * forwardSpeed,forwardAcceleration*Time.deltaTime);
+        //activeForwardSpeed =Mathf.Lerp(activeForwardSpeed, mouseDistance.y * forwardSpeed,forwardAcceleration*Time.deltaTime);
+        activeForwardSpeed = Mathf.Lerp(activeForwardSpeed,  forwardSpeed, forwardAcceleration * Time.deltaTime);
         activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxis("Mouse Y") * strafeSpeed,starfeAcceleration * Time.deltaTime);
         activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Hover") * hoverSpeed,hoverAcceleration*Time.deltaTime);
-        transform.position += transform.forward * Time.deltaTime* forwardSpeed;
+       // transform.position += transform.forward * Time.deltaTime* forwardSpeed;
+       transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) + (transform.up * activeHoverSpeed * Time.deltaTime);
         //transform.position = screenCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, zDistance);
     }
@@ -71,7 +73,7 @@ public class NewBehaviourScript : MonoBehaviour
                 }
                 flag = !flag;
                 tempScale = transform.localScale;
-                tempScale += new Vector3(1, 1, 0);
+                tempScale += new Vector3(0.5f, 0.5f, 0);
                 transform.localScale = tempScale;
             }
         }
@@ -81,6 +83,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (other.CompareTag("bound")==true)
         {
+            Debug.Log("Helloooooooooooo: ");
             transform.position += transform.forward * -activeForwardSpeed;
             transform.position += (transform.right *- activeStrafeSpeed ) + (transform.up * -activeHoverSpeed );
         }

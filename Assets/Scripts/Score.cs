@@ -75,7 +75,7 @@ public class Score : MonoBehaviour
         if (other.gameObject.CompareTag("player"))
         {
            int playValue= NewBehaviourScript.instance.getPlayerValue();
-            if (playValue == scoreLevel)
+            if (playValue >= scoreLevel)
             {
                 SceneManager.LoadScene("WinScene");
             }

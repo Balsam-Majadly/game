@@ -19,7 +19,8 @@ public class ScoreManger : MonoBehaviour
      public void ChangeScore(int coinValue)
     {
         score += coinValue;
-        text.text = "X" + score.ToString();
+        int scoreLevel = NewBehaviourScript1.instance.getlevelValue();
+        text.text =scoreLevel.ToString()+ "/" + score.ToString();
     }
    public int getScore()
     {

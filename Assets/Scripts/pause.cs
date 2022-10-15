@@ -10,31 +10,40 @@ public class pause : MonoBehaviour
     void Start()
     {
         GamePaused = false;
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-       // if (GamePaused)
-         //   Time.timeScale = 0;
-       // else
+        if (GamePaused==true)
+        {
+            Time.timeScale = 0f;
+            Debug.Log(Time.timeScale );
+        }
+        if (GamePaused==false)
+        {
 
-         //   Time.timeScale =1;
+            Time.timeScale = 1f;
+            Debug.Log("false ");
+        }
 
     }
 
     public void PauseGame()
     {
-        Debug.Log("Hello: " );
+         Debug.Log("Hello: " );
+
+        Time.timeScale = 0f;
         GamePaused = true;
         pausedScreen.SetActive(true);
-        Time.timeScale = 0;
+        
     }
 
     public void ResumeGame()
     {
         GamePaused = false;
         pausedScreen.SetActive(false);
-        Time.timeScale = 1;
+        
     }
 }
